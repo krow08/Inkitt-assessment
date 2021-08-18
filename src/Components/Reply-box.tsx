@@ -9,13 +9,13 @@ interface IComments {
 function ReplyBox(props: IComments) {
     const [liveComment, setLiveComment] = useState<string>(props.comment)
     const avatar = 'https://avatars.dicebear.com/api/human/'
-    const name: string = JSON.parse(localStorage.getItem('user')+'')
+    const name: string = JSON.parse(localStorage.getItem('user') + '')
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         e.preventDefault()
         setLiveComment(e.target.value)
     }
-    
+
     const handlePost = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         props.getData(liveComment)

@@ -16,12 +16,11 @@ function CommentReply(props: CommentProps) {
     const [replyBox, setReplyBox] = useState<boolean>(false)
     const [postComments, setPostComments] = useState<IComments[]>([])
     const avatar = 'https://avatars.dicebear.com/api/human/'
-    const name: string = JSON.parse(localStorage.getItem('user')+'')
+    const name: string = JSON.parse(localStorage.getItem('user') + '')
 
     const newReply = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         setReplyBox(true)
-        console.log('newReply');
     }
 
     const commentToPost = (name: string, comment: string) => {
@@ -31,15 +30,12 @@ function CommentReply(props: CommentProps) {
         }]
         setPostComments(newComments)
         setReplyBox(false)
-        console.log(newComments);
     }
 
     return (
         <li>
             <section className='avatar-comment'>
-                {/* <!-- Avatar --> */}
-                <div className="comment-avatar"><img src={avatar + props.name+".svg?background=%239b9b9b"} alt="" /></div>
-                {/* <!-- Contenedor del Comentario --> */}
+                <div className="comment-avatar"><img src={avatar + props.name + ".svg?background=%239b9b9b"} alt="" /></div>
                 <div className="comment-box width-reply">
                     <div className="comment-head">
                         <h6 className="comment-name">{props.name}</h6>

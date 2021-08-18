@@ -14,17 +14,18 @@ function App() {
   const [comment, setComment] = useState<string>('')
   const [showComments, setShowComments] = useState<IComments[]>([])
 
+  //store the name in the localStorage
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(name))
-  },[name])
+  }, [name])
 
+  //handle post button
   const handlePost = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     addComment(name, comment)
-    
-    console.log('showComments', showComments)
   }
 
+  //add comment to an array of comments
   const addComment = (name: string, comment: string) => {
     const newComments: IComments[] = [...showComments, {
       name: name,
@@ -66,9 +67,6 @@ function App() {
                 showComments.map(x =>
                   <Fragment>
                     <li><CommentBox name={x.name} comment={x.comment} /></li>
-                    <ul className="comments-list reply-list">
-
-                    </ul>
                   </Fragment>
                 ) : null
               }
